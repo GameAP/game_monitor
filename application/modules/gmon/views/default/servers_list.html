@@ -1,0 +1,72 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}gmon/add_server">{lang_adm_servers_add_ds}</a>
+<a class="awesome" onclick="anichange('#filter'); return false" href="#">{lang_filter}</a>
+<script>
+function anichange (objName) {
+  if ( $(objName).css('display') == 'none' ) {
+    $(objName).animate({height: 'show'}, 400);
+  } else {
+    $(objName).animate({height: 'hide'}, 200);
+  }
+}
+</script>
+
+<div id="filter" style="display: none">
+	<br />
+	<form action="{site_url}gmon/set_filter" method="post" accept-charset="utf-8">
+		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+		
+		<table class="zebra" width="100%">
+			<tr>
+				<td width="30%">{lang_name}:</td>
+				<td><input type="text" name="filter_name" value="{filter_name}"/></td>
+			</tr>
+			
+			<tr>
+				<td width="30%">{lang_ip}:</td>
+				<td><input type="text" name="filter_host" value="{filter_host}"/></td>
+			</tr>
+			
+			<tr>
+				<td width="30%">{lang_game}:</td>
+				<td>{filter_games_dropdown}</td>
+			</tr>
+
+		</table>
+			<p align="center">
+				<input class="button" type="submit" name="submit_filter" value="{lang_apply}" />
+				<input class="button" type="submit" name="reset" value="{lang_reset}" />
+			</p>
+	</form>
+</div>
+
+{pagination}
+
+<p class="hr">{lang_select_server}</p>
+<table width="100%" class="zebra">
+	<thead>
+		<tr>
+			<th>{lang_name}</th>
+			<th>{lang_ip}</th>
+			<th>{lang_cvarname_map}</th>
+			<th>{lang_cvarname_players}</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	{mservers_list}
+		<tr>
+			<td>{hostname}</td>
+			<td>{host}:{port}</td>
+			<td>{map}</td>
+			<td>{num_players}/{max_players}</td>
+			<td>
+				<a class="small awesome" href="{site_url}gmon/server_info/{mserver_id}">{lang_select}</a>
+				<?php if (isset($this->users->auth_data['is_admin']) && $this->users->auth_data['is_admin']): ?>
+				<a class="small red awesome" href="{site_url}gmon/delete/{mserver_id}">X</a>
+				<?php endif;?>
+			</td>
+		</tr>
+	{/mservers_list}
+</table>
+
+{pagination}

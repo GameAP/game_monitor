@@ -1,0 +1,32 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}gmon">« {lang_back}</a>
+<br /><br />
+
+<form action="{site_url}gmon/add_server" method="post" accept-charset="utf-8">
+	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+	<table class="zebra" width="75%">
+		<tr>
+			<td width="25%">{lang_game}:</td>
+			<td>
+				<select name="game_code">
+					{games_list}
+						<option value="{game_code}">{game_name}</option>
+					{/games_list}
+				 </select>
+			</td>
+		</tr>
+		<tr>
+			<td>{lang_ip}:{lang_port}</td>
+			<td><input type="text" name="host" /></td>
+		</tr>
+		<tr>
+			<td>{lang_description}</td>
+			<td><textarea style="height:50px" name="description"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2"><br /><input class="button" type="submit" value="{lang_add}" /></td>
+		</tr>
+	</table>
+
+</form>

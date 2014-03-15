@@ -1,0 +1,51 @@
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<a class="awesome" href="{site_url}gmon">« {lang_back}</a>
+<br /><br />
+
+<table width="100%" class="zebra">
+		<tr>
+			<td>{lang_cvarname_hostname}:</td>
+			<td>{hostname}</td>
+		</tr>
+		<tr>
+			<td>{lang_cvarname_map}:</td>
+			<td>{map}</td>
+		</tr>
+		<tr>
+			<td>{lang_cvarname_players}:</td>
+			<td>{num_players}/{max_players}</td>
+		</tr>
+		<tr>
+			<td>{lang_description}</td>
+			<td>{description}</td>
+		</tr>
+</table>
+
+<p class="hr">{lang_cvarname_players}</p>
+
+<table width="50%" class="zebra">
+			<tr>
+				<th width="75%">{lang_name}</th>
+				<th width="25%">{lang_score}</th>
+			</tr>
+		{online_players}
+			<tr>
+				<td>{name}</td>
+				<td>{score}</td>
+			</tr>
+		{/online_players}
+</table>
+
+<p class="hr">Cvars</p>
+<table width="50%" class="zebra">
+			<tr>
+				<th width="50%">{lang_name}</th>
+				<th width="50%">{lang_value}</th>
+			</tr>
+		{cvars}
+			<tr>
+				<td>{cv_name}</td>
+				<td>{cv_value}</td>
+			</tr>
+		{/cvars}
+</table>
