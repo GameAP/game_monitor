@@ -26,12 +26,7 @@ class Gmon extends MX_Controller {
 		$this->lang->load('gmon');				// Загрузка языкового файла (application/modules/gmon/language/russian/gmon_lang.php)
 		$this->lang->load('adm_servers');		// Загрузка языкового файла (application/language/russian/adm_servers.php)
 		$this->lang->load('server_control');	// Загрузка языкового файла (application/language/russian/server_control.php)
-		
-		if(version_compare(AP_VERSION, '0.9-dev') == -1) {
-			// Необходима версия GameAP не ниже 0.9-dev
-			exit('Current GameAP version not support');
-		}
-		
+        
 		$this->users->check_user();
 		
 		/* Пользователь не авторизован, а доступ таким запрещен,
